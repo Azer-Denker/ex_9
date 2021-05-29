@@ -9,9 +9,9 @@
             <div class="box">
                 <h3><a href="{% url "webapp:photo_view" photo.pk %}">{{ photo.signature }}</a></h3>
                     <p>
-                           <img src="{{ photo.photo_img.url }}" width="250" height="250"alt="photo">
-                            <br>
-                            {{ photo.signature }}
+                       <img src="{{ photo.photo_img.url }}" width="250" height="250"alt="photo">
+                        <br>
+                        {{ photo.signature }}
                     </p>
                 <p>Автор: {{ photo.author }}</p>
                 <p>Созданно: {{ photo.created_at }}</p>

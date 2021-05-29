@@ -7,6 +7,7 @@ app_name = 'webapp'
 
 urlpatterns = [
     path('', IndexView.as_view(), name='index'),
+    path('photo_list/', PIndexView.as_view(), name='p_index'),
 
     path('photo/', include([
         path('add/', PhotoCreateView.as_view(), name='photo_create'),
