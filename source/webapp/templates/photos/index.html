@@ -5,7 +5,7 @@
         {% include 'partial/pagination.html' %}
     {% endif %}
     {% for photo in photos %}
-        {% if photo.status == 'all' or photos.author %}
+        {% if photo.status == 'all' or photo.author %}
             <div class="box">
                 <h3><a href="{% url "webapp:photo_view" photo.pk %}">{{ photo.signature }}</a></h3>
                     <p>
