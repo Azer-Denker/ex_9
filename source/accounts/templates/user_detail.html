@@ -21,6 +21,7 @@
     <p>Почта: {{ user_obj.email }}</p>
     <h2 class="text-center clear">Gallery автора:</h2>
         {% include 'photos/index.html' %}
+        {% include 'album/index.html' %}
 
     <h2 class="text-center clear">Favorites автора:</h2>
         {% for favorite in favorites %}
