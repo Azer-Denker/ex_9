@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load staticfiles likes %}
+
+{% block title %}View{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:photo_update' photo.pk %}">Update</a></li>
+    <li><a href="{% url 'webapp:photo_delete' photo.pk %}">Delete</a></li>
+{% endblock %}
+
+{% block content %}
+    <div class="box">
+
+    <p>
+        <img src="{{ photo.photo_img.url }}" width="250" height="250"alt="photo">
+        <br>
+        {{ photo.signature }}
+    </p>
+    <p>Автор: {{ photo.author }}</p>
+    <p> Созданно: {{ photo.created_at }} </p>
+    </div>
+
+    <p>Users which like: {% for user in likes %}
+        <a href="{% url 'accounts:detail' user.author.pk %}">{{ user.author}}</a>
+    {% endfor %}
+    </p>
+    {% if user.is_authenticated %}
+    {% if photo|liked_by:user  %}
+        <a class="add hide" href="{% url 'api:favorites_add' photo.pk%}">
+            Add to Favorites</a>
+        <a class=" remove show" href="{% url 'api:favorites_remove' photo.pk%}">
+             Delete from Favorites</a>
+    {% else %}
+        <a class="add show" href="{% url 'api:favorites_add' photo.pk%}">
+            Add to Favorites</a>
+        <a class="remove hide" href="{% url 'api:favorites_remove' photo.pk%}">
+             Delete from Favorites</a>
+    {% endif %}
+{% endif %}
+{% endblock %}

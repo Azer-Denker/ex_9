@@ -1,0 +1,83 @@
+[
+{
+  "model": "webapp.photo",
+  "pk": 3,
+  "fields": {
+    "photo_img": "photos/\u0421\u043d\u0438\u043c\u043e\u043a_\u044d\u043a\u0440\u0430\u043d\u0430_\u043e\u0442_2020-08-06_16-11-29.png",
+    "signature": "\u0420\u0430\u043d\u0434\u043e\u043c\u043d\u0430\u044f \u0444\u043e\u0442\u043a\u0430",
+    "created_at": "2020-10-25T04:58:13.934Z",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 4,
+  "fields": {
+    "photo_img": "photos/\u0421\u043d\u0438\u043c\u043e\u043a_\u044d\u043a\u0440\u0430\u043d\u0430_\u043e\u0442_2020-06-06_12-08-54.png",
+    "signature": "\u0420\u0430\u0437\u043d\u043e\u043e\u0431\u0440\u0430\u0437\u043d\u044b\u0435 \u0444\u043e\u0442\u043e\u0433\u0440\u0430\u0444\u0438\u0438",
+    "created_at": "2020-10-25T04:58:28.335Z",
+    "author": 1
+  }
+},
+{
+  "model": "webapp.photo",
+  "pk": 5,
+  "fields": {
+    "photo_img": "photos/\u0421\u043d\u0438\u043c\u043e\u043a_\u044d\u043a\u0440\u0430\u043d\u0430_\u043e\u0442_2020-05-12_16-55-47.png",
+    "signature": "new_test",
+    "created_at": "2020-10-25T06:26:17.253Z",
+    "author": 3
+  }
+},
+{
+  "model": "webapp.favorite",
+  "pk": 1,
+  "fields": {
+    "photo": 3,
+    "author": 2
+  }
+},
+{
+  "model": "webapp.favorite",
+  "pk": 17,
+  "fields": {
+    "photo": 3,
+    "author": 1
+  }
+},
+{
+  "model": "webapp.favorite",
+  "pk": 18,
+  "fields": {
+    "photo": 4,
+    "author": 1
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "birth_date": null,
+    "avatar": ""
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": 3,
+    "birth_date": null,
+    "avatar": ""
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": 1,
+    "birth_date": "2020-10-25",
+    "avatar": "user_pics/\u0421\u043d\u0438\u043c\u043e\u043a_\u044d\u043a\u0440\u0430\u043d\u0430_\u043e\u0442_2020-05-20_17-50-34.png"
+  }
+}
+]

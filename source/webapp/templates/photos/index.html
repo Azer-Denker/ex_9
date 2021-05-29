@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load staticfiles likes %}
+
+{% block content %}
+    <h1>Галлерея:</h1>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    {% for photo in photos %}
+        <div class="box">
+            <h3><a href="{% url "webapp:photo_view" photo.pk %}">{{ photo.signature }}</a></h3>
+                <p>
+                       <img src="{{ photo.photo_img.url }}" width="250" height="250"alt="photo">
+                        <br>
+                        {{ photo.signature }}
+                </p>
+            <p>Автор: {{ photo.author }}</p>
+            <p> Созданно: {{ photo.created_at }} </p>
+            
+            {% if perms.webapp.change_photo %}
+                <p><a href="{% url 'webapp:photo_update' photo.pk %}">Update</a></p>
+            {% endif %}
+            {% if perms.webapp.delete_photo %}
+                <p><a href="{% url 'webapp:photo_delete' photo.pk %}">Delete</a></p>
+            {% endif %}
+            {% if user.is_authenticated %}
+                {% if photo|liked_by:user  %}
+                    <a class="add hide" href="{% url 'api:favorites_add' photo.pk%}">
+                        Add to Favorites</a>
+                    <a class=" remove " href="{% url 'api:favorites_remove' photo.pk%}">
+                         Delete from Favorites</a>
+                {% else %}
+                    <a class="add " href="{% url 'api:favorites_add' photo.pk%}">
+                        Add to Favorites</a>
+                    <a class="remove hide" href="{% url 'api:favorites_remove' photo.pk%}">
+                         Delete from Favorites</a>
+                {% endif %}
+            {% endif %}
+
+
+        </div>
+    {% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}

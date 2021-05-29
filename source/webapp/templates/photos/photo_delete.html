@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete{% endblock %}
+
+{% block menu %}
+    <li><a href="{% url 'webapp:photo_view' photo.pk %}">Отмена</a></li>
+{% endblock %}
+
+{% block content %}
+    <h1>Вы уверены, что хотите удалить Фото "{{ photo.signature }}" из галереи ?</h1>
+    <form action="{% url "webapp:photo_delete" photo.pk %}" method="post">
+        {% csrf_token %}
+        <p><input type="submit" value="Да"></p>
+        <p><a href="{% url 'webapp:photo_view' photo.pk %}">Отмена</a></p>
+    </form>
+{% endblock %}

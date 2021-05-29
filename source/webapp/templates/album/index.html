@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load staticfiles likes %}
+
+{% block content %}
+    <h1>Gallery:</h1>
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+    {% for album in albums %}
+        <div class="box">
+            {% if request.user.is_authenticated %}
+                <h3><a href="{% url "webapp:album_view" album.pk %}">{{ album.name }}</a></h3>
+            {% else %}
+                <h3>{{ album.name }}</h3>
+            {% endif %}
+            <p>{{ album.description }}</p>
+            <p>Автор: {{ album.author }}</p>
+            <p> Созданно: {{ album.created_at }} </p>
+            
+            {% if perms.webapp.change_album or album.author %}
+                <p><a href="{% url 'webapp:album_update' album.pk %}">Update</a></p>
+            {% endif %}
+            {% if perms.webapp.delete_album or album.author %}
+                <p><a href="{% url 'webapp:album_delete' album.pk %}">Delete</a></p>
+            {% endif %}
+        </div>
+    {% endfor %}
+    {% if is_paginated %}
+        {% include 'partial/pagination.html' %}
+    {% endif %}
+{% endblock %}
+{% block scripts %}
+{% endblock %}

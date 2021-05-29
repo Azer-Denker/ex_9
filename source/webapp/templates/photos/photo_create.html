@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block title %}Create Photo{% endblock %}
+{% block content %}
+
+    {% url 'webapp:photo_create' as action_url %}
+    {% include 'partial/form.html' with form_method="POST" btn_name='Создать' action='Create' action_url=action_url enctype="multipart/form-data"%}
+
+{% endblock %}
+</body>
+</html>
