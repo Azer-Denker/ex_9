@@ -2,6 +2,12 @@ from django.contrib.auth import get_user_model
 from django.db import models
 
 
+STATUS_CHOICES = [
+    ('all', 'Публичный'),
+    ('private', 'Приватный'),
+]
+
+
 class Album(models.Model):
     name = models.CharField(max_length=2000, verbose_name='Название')
     description = models.CharField(max_length=2000, null=True, blank=True, verbose_name='Описание')
@@ -18,6 +24,7 @@ class Photo(models.Model):
                                on_delete=models.CASCADE)
     album = models.ForeignKey(Album, null=True, blank=True, verbose_name='Альбом', related_name='photo_album',
                               on_delete=models.CASCADE)
+    status = models.CharField(max_length=15, choices=STATUS_CHOICES, default='all', verbose_name='Публичный')
 
     def is_in_favorite(self, user):
         liked_by_user = self.favorite_photo.filter(author=user)

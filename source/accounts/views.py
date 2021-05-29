@@ -60,8 +60,10 @@ class UserDetailView(LoginRequiredMixin, DetailView):
     paginate_related_orphans = 0
 
     def get_context_data(self, **kwargs):
+        photos = self.object.author_photos.all()
         favorites = self.object.author_favorites.all()
         kwargs['favorites'] = favorites
+        kwargs['photos'] = photos
         return super().get_context_data(**kwargs)
 
 
